@@ -1,9 +1,9 @@
 <?php
 // Database configuration
 $host = 'containers-us-west-12.railway.app'; // Docker compose માં db service name
-$username = 'railway';        // 👈 યુઝરનામ define કરો
-$password = 'password';    // 👈 પાસવર્ડ define કરો
-$database = 'railway';   // 👈 DB નું નામ
+$username = 'railway';    
+$password = 'password';   
+$database = 'railway';   
 
 $conn = mysqli_connect($host, $username, $password, $database);
 
