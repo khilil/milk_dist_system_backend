@@ -38,10 +38,6 @@ if (!tableExists($conn, 'tbl_customer')) { // ✅ Change to a table you expect
     }
 }
 
-// ✅ Safe close
-if ($conn && $conn->ping()) {
-    mysqli_close($conn);
-}
 
 // Function to check if a table exists
 function tableExists($conn, $table) {
