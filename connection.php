@@ -16,10 +16,18 @@ if (!$conn) {
 }
 
 if (mysqli_multi_query($conn, $sql)) {
+    do {
+        // Store result to flush it from the stack
+        if ($result = mysqli_store_result($conn)) {
+            mysqli_free_result($result);
+        }
+    } while (mysqli_more_results($conn) && mysqli_next_result($conn));
+
     echo "✅ SQL import successful!";
 } else {
     echo "❌ Error importing SQL: " . mysqli_error($conn);
 }
+
 
 if ($conn && $conn->ping()) {
     mysqli_close($conn);
