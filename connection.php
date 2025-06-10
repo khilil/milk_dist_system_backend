@@ -21,5 +21,7 @@ if (mysqli_multi_query($conn, $sql)) {
     echo "❌ Error importing SQL: " . mysqli_error($conn);
 }
 
-mysqli_close($conn);
+if ($conn && $conn->ping()) {
+    mysqli_close($conn);
+}
 ?>
