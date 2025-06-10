@@ -1,8 +1,8 @@
 <?php
 // Database configuration
-$host = 'containers-us-west-12.railway.app'; // Docker compose માં db service name
-$username = 'railway';    
-$password = 'password';   
+$host = 'mysql.railway.internal'; // Docker compose માં db service name
+$username = 'root';    
+$password = 'JjNPWxcgEQWDFTKWsBLVVpRrIeeYgYrK';   
 $database = 'railway';   
 
 $conn = mysqli_connect($host, $username, $password, $database);
