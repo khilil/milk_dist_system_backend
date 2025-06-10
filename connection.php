@@ -6,7 +6,7 @@ $password = 'utGwxQOdvrghdlUigzPKWPZHXDCsSSHA';
 $database = 'railway';
 
 // Load the SQL file
-$sqlFile = 'milk_dist_database2.sql';  // make sure this file is in the same folder
+$sqlFile = __DIR__ . '/milk_dist_database2.sql'; // make sure this file is in the same folder
 $sql = file_get_contents($sqlFile);
 
 $conn = mysqli_connect($host, $user, $password, $database, $port);
