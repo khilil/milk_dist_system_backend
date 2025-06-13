@@ -113,7 +113,7 @@ switch ($method) {
         }
 
         // Check if phone already exists
-        $checkQuery = "SELECT Customer_id FROM tbl_Customer WHERE Contact = ?";
+        $checkQuery = "SELECT Customer_id FROM tbl_customer WHERE Contact = ?";
         $checkStmt = mysqli_prepare($conn, $checkQuery);
         mysqli_stmt_bind_param($checkStmt, "s", $contact);
         mysqli_stmt_execute($checkStmt);
@@ -130,7 +130,7 @@ switch ($method) {
         mysqli_stmt_close($checkStmt);
 
         // Prepare and execute insert query
-        $sql = "INSERT INTO tbl_Customer (Name, Contact, Password, Address_id, Price, Date) 
+        $sql = "INSERT INTO tbl_customer (Name, Contact, Password, Address_id, Price, Date) 
                 VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($conn, $sql);
@@ -171,7 +171,7 @@ switch ($method) {
         $price = floatval($data['Price']);
         $date = mysqli_real_escape_string($conn, trim($data['Date']));
 
-        $sql = "UPDATE tbl_Customer SET 
+        $sql = "UPDATE tbl_customer SET 
                 Name=?, Contact=?, Address_id=?, Price=?, Date=? 
                 WHERE Customer_id=?";
 
@@ -191,7 +191,7 @@ switch ($method) {
         $data = json_decode(file_get_contents("php://input"), true);
         $id = intval($data['Customer_id']);
 
-        $sql = "DELETE FROM tbl_Customer WHERE Customer_id=?";
+        $sql = "DELETE FROM tbl_customer WHERE Customer_id=?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "i", $id);
 
