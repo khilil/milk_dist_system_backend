@@ -10,7 +10,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
         // READ sellers
-        $sql = "SELECT * FROM tbl_seller";
+        $sql = "SELECT * FROM tbl_Seller";
         $result = mysqli_query($conn, $sql);
 
         $sellers = [];
