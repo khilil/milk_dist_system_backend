@@ -63,7 +63,7 @@ switch ($method) {
         }
 
         // Check if phone or vehicle number already exists
-        $checkQuery = "SELECT Seller_id FROM tbl_Seller WHERE Contact = ? OR Vehicle_no = ?";
+        $checkQuery = "SELECT Seller_id FROM tbl_seller WHERE Contact = ? OR Vehicle_no = ?";
         $checkStmt = mysqli_prepare($conn, $checkQuery);
         mysqli_stmt_bind_param($checkStmt, "ss", $contact, $vehicle_no);
         mysqli_stmt_execute($checkStmt);
@@ -80,7 +80,7 @@ switch ($method) {
         mysqli_stmt_close($checkStmt);
 
         // Prepare and execute insert query
-        $sql = "INSERT INTO tbl_Seller (Name, Contact, Password, Vehicle_no) 
+        $sql = "INSERT INTO tbl_seller (Name, Contact, Password, Vehicle_no) 
                 VALUES (?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($conn, $sql);
@@ -119,7 +119,7 @@ switch ($method) {
         $contact = mysqli_real_escape_string($conn, $data['Contact']);
         $vehicle_no = mysqli_real_escape_string($conn, $data['Vehicle_no']);
 
-        $sql = "UPDATE tbl_Seller SET 
+        $sql = "UPDATE tbl_seller SET 
                 Name='$name', Contact='$contact', Vehicle_no='$vehicle_no' 
                 WHERE Seller_id=$id";
 
@@ -135,7 +135,7 @@ switch ($method) {
         $data = json_decode(file_get_contents("php://input"), true);
         $id = $data['Seller_id'];
 
-        $sql = "DELETE FROM tbl_Seller WHERE Seller_id=$id";
+        $sql = "DELETE FROM tbl_seller WHERE Seller_id=$id";
 
         if (mysqli_query($conn, $sql)) {
             echo json_encode(["status" => "success", "message" => "Seller deleted successfully"]);
